@@ -35,20 +35,19 @@ export function Header() {
   }
 
   return (
-    <BlurFade inView>
       <header className="mt-7 mb-5 lg:my-4">
-        <BlurFade inView>
           <div className="lg:py-2 px-4">
             <div className="flex items-center justify-between">
-              <BlurFade inView>
+              <div className='flex-shrink-0'>
                 <Image
-                  className="size-12 object-cover lg:size-[10rem] bg-transparent"
+                  className="h-[4.5rem] w-auto lg:h-20 object-contain"
                   src={Logo}
-                  height={2000}
-                  width={2000}
+                  height={3780}
+                  width={6804}
                   alt="logo"
                 />
-              </BlurFade>
+              </div>
+
               <div className="hidden lg:block">
                 <nav className="border rounded-lg p-4 flex items-center">
                   <ul className="flex items-center justify-center gap-10">
@@ -71,16 +70,13 @@ export function Header() {
                   </ul>
                 </nav>
               </div>
-
-              <BlurFade inView>
                 <Button className="hidden lg:block bg-blueAm text-grayAm font-semibold hover:bg-blue-900">
                   <Link href="https://api.whatsapp.com/send?phone=5515997452271&text=Quero%20solicitar%20um%20or%C3%A7amento!">
                     Entrar em contato
                   </Link>
                 </Button>
-              </BlurFade>
-              <div className="flex justify-between min-[825px]:hidden">
-                <BlurFade inView>
+
+              <div className="flex items-center justify-between min-[825px]:hidden">
                   <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
                     <DrawerTrigger asChild>
                       <button aria-label="Open menu">
@@ -112,12 +108,9 @@ export function Header() {
                       </BlurFade>
                     </DrawerContent>
                   </Drawer>
-                </BlurFade>
               </div>
             </div>
           </div>
-        </BlurFade>
       </header>
-    </BlurFade>
   )
 }

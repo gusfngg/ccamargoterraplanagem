@@ -4,6 +4,7 @@ import { FrequentlyAsked } from '@/components/frequently-asked '
 import { Header } from '@/components/header'
 import Hero from '@/components/hero'
 import Marquee from '@/components/marquee'
+import { ReviewsSection } from '@/components/reviewSection'
 import { Services } from '@/components/services'
 import { Values } from '@/components/values'
 
@@ -22,6 +23,7 @@ export default function Home() {
 
       <div className="mx-auto flex max-w-[90rem] flex-col px-5">
         <Values />
+        <ReviewsSection/>
         <Marquee />
         <About />
 

@@ -13,6 +13,7 @@ const config: Config = {
       colors: {
         blueAm: '#0A2E63',
         grayAm: '#E5E5E5',
+        goldAm: '#cfab5c',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
@@ -100,6 +101,13 @@ const config: Config = {
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
     },
+  },
+        animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fade-in 0.6s ease-out",
+        "slide-in": "slide-in 0.5s ease-out",
+        "float": "float 3s ease-in-out infinite",
   },
   plugins: [animate],
 }
