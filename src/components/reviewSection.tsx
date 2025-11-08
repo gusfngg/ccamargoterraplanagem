@@ -5,67 +5,67 @@ import { jura, switzer } from '@/lib/fonts'
 
 const reviews = [
   {
-    name: "Carlos Silva",
+    name: "Obra JK",
     rating: 5,
-    date: "há 2 semanas",
-    comment: "Excelente serviço de terraplenagem! Equipe profissional, pontual e com equipamentos de primeira linha. Fizeram a terraplanagem do meu terreno com perfeição e dentro do prazo combinado.",
-    avatar: "CS"
+    date: "há 4 mês",
+    comment: "Excelente fornecedor! Atendimento com muito comprometimento, preços justos e total transparência. Recomendo de olhos fechados para quem busca parcerias de verdade!",
+    avatar: "OJ"
   },
   {
-    name: "Maria Santos",
+    name: "Váleria Freire",
     rating: 5,
-    date: "há 1 mês",
-    comment: "Recomendo demais! Fizeram todo o serviço de escavação e nivelamento do terreno para minha obra. Trabalho impecável, preço justo e muita atenção aos detalhes.",
-    avatar: "MS"
+    date: "há 3 anos",
+    comment: "Excelente empresa! A equipe que me atendeu era muito experiente e qualificada. O serviço foi executado conforme especificado em projeto, com cuidado e precisão. Paguei um valor justo. Super recomendo!",
+    avatar: "VF"
   },
   {
-    name: "João Oliveira",
+    name: "Nelso Torres",
     rating: 5,
-    date: "há 3 semanas",
-    comment: "Empresa séria e comprometida. Realizaram a terraplanagem de um grande projeto e superaram nossas expectativas. Equipe técnica muito capacitada.",
-    avatar: "JO"
+    date: "há 11 mês",
+    comment: "Empresa integra com profissionais extremamente comprometidos. Serviço de qualidade e competência. Muitíssimo satisfeito.",
+    avatar: "NT"
   },
   {
-    name: "Ana Paula Costa",
+    name: "Debora Cristina",
     rating: 5,
-    date: "há 2 meses",
-    comment: "Serviço de altíssima qualidade! Fizeram todo o movimento de terra do meu loteamento. Equipamentos modernos e operadores muito experientes. Estou muito satisfeita!",
-    avatar: "AC"
+    date: "há 4 anos",
+    comment: "Super recomendo, o serviço ficou de excelente qualidade, os funcionários desde o atendimento até o operador  muito bem atenciosos e prestativos e pontual em relação a data e horário combinados! 👏👏👏",
+    avatar: "DC"
   },
   {
-    name: "Roberto Ferreira",
+    name: "Vera Márcia",
     rating: 5,
-    date: "há 1 semana",
-    comment: "Melhor empresa de terraplenagem da região! Atendimento excelente desde o orçamento até a conclusão da obra. Cumpriram todos os prazos e o resultado ficou perfeito.",
-    avatar: "RF"
+    date: "há 4 semanas",
+    comment: "Excelente profissional, segunda vez que fechamos com ele e o serviço foi executado com rapidez e excelência!",
+    avatar: "VM"
   },
   {
-    name: "Patricia Lima",
+    name: "Paulo Júnior",
     rating: 5,
-    date: "há 3 semanas",
-    comment: "Profissionais extremamente competentes! Fizeram a escavação e aterramento do meu terreno com muito cuidado e profissionalismo. Recomendo de olhos fechados!",
-    avatar: "PL"
+    date: "há 4 anos",
+    comment: "Excelentes profissionais. Cumprem o que prometem, trabalho honesto. Excelente serviço. Com certeza voltarei a fazer serviços com eles e com certeza eu indico.",
+    avatar: "PJ"
   },
   {
-    name: "Fernando Souza",
+    name: "Paulo Rogério",
     rating: 5,
-    date: "há 1 mês",
-    comment: "Impressionante a qualidade do trabalho! Equipamentos de última geração e equipe super qualificada. Transformaram completamente meu terreno irregular.",
-    avatar: "FS"
+    date: "há 3 anos",
+    comment: "Trabalho realizado no prazo estipulado, com ótima qualidade e profissionalismo, preço justo. Super recomendo.",
+    avatar: "PG"
   },
   {
-    name: "Juliana Mendes",
+    name: "Élio Batista",
     rating: 5,
-    date: "há 2 semanas",
-    comment: "Contratei para um projeto grande e não me arrependo. Pontualidade, qualidade e preço justo. Já indiquei para vários amigos!",
-    avatar: "JM"
+    date: "há 3 mês",
+    comment: "Foi muito fácil de combinar o trabalho e resolveu tudo que eu precisei. Excelente, obrigado!",
+    avatar: "EB"
   }
 ];
 
 const stats = [
-  { icon: Star, value: "5.0", label: "Avaliação Média" },
-  { icon: Users, value: "500+", label: "Clientes Atendidos" },
-  { icon: Award, value: "15+", label: "Anos de Experiência" },
+  { icon: Star, value: "4.9", label: "Avaliação Média" },
+  { icon: Users, value: "2.000+", label: "Clientes Atendidos" },
+  { icon: Award, value: "15+", label: "Anos no Mercado" },
   { icon: TrendingUp, value: "98%", label: "Satisfação" }
 ];
 
@@ -83,13 +83,13 @@ export const ReviewsSection = () => {
           </div>
           
           <h1
-              className={`${jura.className} text-4xl font-black text-center mb-10`}
+              className={`${jura.className} text-4xl font-black text-center`}
             >
               A OPINIÃO DE QUEM JÁ CONHECE
           </h1>
           
-          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Centenas de clientes satisfeitos confiam em nossos serviços de terraplenagem
+          <p className="text-base font-thin md:text-lg text-muted-foreground max-w-2xl mx-auto">
+            Milhares de clientes satisfeitos confiam em nossos serviços de terraplenagem
           </p>
         </div>
 
@@ -98,7 +98,7 @@ export const ReviewsSection = () => {
           {stats.map((stat, index) => (
             <div 
               key={index}
-              className="bg-gradient-to-br from-card to-card/50 backdrop-blur-sm border border-border rounded-xl p-4 md:p-6 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 animate-slide-in"
+              className="bg-gradient-to-br from-card to-card/50 backdrop-blur-sm border border-goldAm/40 rounded-xl p-4 md:p-6 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 animate-slide-in"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <stat.icon className="w-6 h-6 md:w-8 md:h-8 mx-auto mb-3 text-blueAm" />

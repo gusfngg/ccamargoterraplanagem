@@ -10,7 +10,7 @@ import { Values } from '@/components/values'
 
 export default function Home() {
   return (
-    <div className="bg-grayAm antialiased">
+    <div className="bg-blueAm/5 antialiased">
       <div className="mx-auto flex max-w-[90rem] flex-col px-5">
         <Header />
       </div>

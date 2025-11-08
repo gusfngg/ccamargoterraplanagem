@@ -11,18 +11,14 @@ import BlurFade from './ui/blur-fade'
 export function FrequentlyAsked() {
   return (
     <div className="mt-32 flex items-center justify-center flex-col">
-      <BlurFade inView>
         <h1
           className={`${switzer.className} font-medium text-2xl lg:text-3xl text-center mx-auto max-w-[900px]`}
         >
           Perguntas frequentes
         </h1>
-      </BlurFade>
 
       <div className="w-[23rem] lg:w-[45rem] mt-12 border p-4 rounded-md flex items-center justify-center flex-col">
-        <BlurFade inView>
           <Accordion type="single" collapsible className="w-full">
-            <BlurFade inView>
               <AccordionItem value="item-1">
                 <AccordionTrigger>
                   Quais serviços de terraplenagem vocês oferecem?
@@ -34,8 +30,6 @@ export function FrequentlyAsked() {
                   garantindo estabilidade e segurança.
                 </AccordionContent>
               </AccordionItem>
-            </BlurFade>
-            <BlurFade inView>
               <AccordionItem value="item-2">
                 <AccordionTrigger>
                   Quanto tempo dura um projeto de terraplenagem?
@@ -47,8 +41,6 @@ export function FrequentlyAsked() {
                   podem levar algumas semanas.
                 </AccordionContent>
               </AccordionItem>
-            </BlurFade>
-            <BlurFade inView>
               <AccordionItem value="item-3">
                 <AccordionTrigger>
                   A empresa trabalha com terrenos de qualquer tamanho?
@@ -61,8 +53,6 @@ export function FrequentlyAsked() {
                   eficiência.
                 </AccordionContent>
               </AccordionItem>
-            </BlurFade>
-            <BlurFade inView>
               <AccordionItem value="item-4">
                 <AccordionTrigger>
                   Quais são as etapas do processo de terraplenagem?
@@ -74,9 +64,7 @@ export function FrequentlyAsked() {
                   garantir um terreno estável e seguro.
                 </AccordionContent>
               </AccordionItem>
-            </BlurFade>
           </Accordion>
-        </BlurFade>
 
         <BlurFade inView>
           <ButtonCta className="mt-6" message="Solicite um orçamento" />

@@ -20,8 +20,8 @@ export function Values() {
         <BlurFade inView>
           <Card className="relative overflow-hidden">
             <CardContent className="p-6 flex flex-col items-center text-center space-y-4">
-              <div className="p-3 bg-brownAm rounded-lg">
-                <Leaf className="size-8 text-orangeAm" />
+              <div className="p-3 bg-blueAm rounded-lg">
+                <Leaf className="size-8 text-grayAm" />
               </div>
               <h3 className={`${switzer.className} text-xl font-medium`}>
                 Terreno preparado com precisão
@@ -38,8 +38,8 @@ export function Values() {
         <BlurFade inView>
           <Card className="relative overflow-hidden">
             <CardContent className="p-6 flex flex-col items-center text-center space-y-4">
-              <div className="p-3 bg-brownAm rounded-lg">
-                <Target className="size-8 text-orangeAm" />
+              <div className="p-3 bg-blueAm rounded-lg">
+                <Target className="size-8 text-grayAm" />
               </div>
               <h3 className={`${switzer.className} text-xl font-medium`}>
                 Execução eficiente
@@ -56,8 +56,8 @@ export function Values() {
         <BlurFade inView>
           <Card className="relative overflow-hidden">
             <CardContent className="p-6 flex flex-col items-center text-center space-y-4">
-              <div className="p-3 bg-brownAm rounded-lg">
-                <Lock className="size-8 text-orangeAm" />
+              <div className="p-3 bg-blueAm rounded-lg">
+                <Lock className="size-8 text-grayAm" />
               </div>
               <h3 className={`${switzer.className} text-xl font-medium`}>
                 Segurança em cada etapa

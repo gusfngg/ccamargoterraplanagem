@@ -7,19 +7,17 @@ export function About() {
   return (
     <section
       id="about"
-      className="mt-28 lg:flex-row flex-col flex lg:items-start items-center gap-4 lg:gap-16"
+      className="mt-28 flex-col  flex items-center justify-center gap-4 lg:gap-16"
     >
-      <BlurFade inView>
         <Image
-          className="lg:w-[400px] lg:h-[600px] h-[490px] w-[380px] rounded-md"
+          className="w-1/2 h-full rounded-md"
           src={AboutImage}
           height={5313}
           width={3438}
           alt=""
         />
-      </BlurFade>
 
-      <div>
+      <div className=''>
         <BlurFade inView>
           <h1 className={`text-2xl md:text-3xl font-bold ${jura.className}`}>
             SOBRE NÓS
