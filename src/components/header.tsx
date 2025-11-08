@@ -51,24 +51,24 @@ export function Header() {
               </BlurFade>
               <div className="hidden lg:block">
                 <nav className="border rounded-lg p-4 flex items-center">
-                    <ul className="flex items-center justify-center gap-10">
-                      {navItems.map((item) => (
-                        <li key={item.to} className='flex items-center'>
-                          <ScrollLink
-                            to={item.to}
-                            smooth={true}
-                            duration={500}
-                            offset={-70}
-                            spy={true}
-                            activeClass="text-primary"
-                          >
-                            <span className="text-lg cursor-pointer text-blueAm font-medium hover:text-blue-950 transition-">
-                              {item.name}
-                            </span>
-                          </ScrollLink>
-                        </li>
-                      ))}
-                    </ul>
+                  <ul className="flex items-center justify-center gap-10">
+                    {navItems.map((item) => (
+                      <li key={item.to} className="flex items-center">
+                        <ScrollLink
+                          to={item.to}
+                          smooth={true}
+                          duration={500}
+                          offset={-70}
+                          spy={true}
+                          activeClass="text-primary"
+                        >
+                          <span className="text-lg cursor-pointer text-blueAm font-medium hover:text-blue-950 transition-">
+                            {item.name}
+                          </span>
+                        </ScrollLink>
+                      </li>
+                    ))}
+                  </ul>
                 </nav>
               </div>
 
