@@ -84,7 +84,7 @@ export function Services() {
                 />
               </div>
             </DialogTrigger>
-            <DialogContent className="max-w-2xl bg-slate-200">
+            <DialogContent className="w-3/4 lg:max-w-2xl bg-slate-200">
               <DialogHeader>
                 <DialogTitle className="text-2xl">{service.title}</DialogTitle>
                 <DialogDescription className="text-base text-muted-foreground pt-4 text-left leading-relaxed">
