@@ -9,14 +9,6 @@ export function About() {
       id="about"
       className="mt-28 flex-col  flex items-center justify-center gap-4 lg:gap-16"
     >
-        <Image
-          className="w-1/2 h-full rounded-md"
-          src={AboutImage}
-          height={5313}
-          width={3438}
-          alt=""
-        />
-
       <div className=''>
         <BlurFade inView>
           <h1 className={`text-2xl md:text-3xl font-bold ${jura.className}`}>
@@ -40,6 +32,14 @@ export function About() {
           </p>
         </BlurFade>
       </div>
+
+        <Image
+          className="w-full lg:w-1/2 h-full rounded-md"
+          src={AboutImage}
+          height={5313}
+          width={3438}
+          alt=""
+        />
     </section>
   )
 }
