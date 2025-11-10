@@ -72,7 +72,7 @@ const stats = [
 
 export const ReviewsSection = () => {
   return (
-    <section className="relative py-16 md:py-24 px-4 overflow-hidden">
+    <section id="feedbacks" className="relative py-16 md:py-24 px-4 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-secondary/20 -z-10" />
       

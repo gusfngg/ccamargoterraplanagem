@@ -10,7 +10,7 @@ import BlurFade from './ui/blur-fade'
 
 export function FrequentlyAsked() {
   return (
-    <div className="mt-32 flex items-center justify-center flex-col">
+    <section id='askeds' className="mt-32 flex items-center justify-center flex-col">
         <h1
           className={`${switzer.className} font-medium text-2xl lg:text-3xl text-center mx-auto max-w-[900px]`}
         >
@@ -70,6 +70,6 @@ export function FrequentlyAsked() {
           <ButtonCta className="mt-6" message="Solicitar um orçamento" />
         </BlurFade>
       </div>
-    </div>
+    </section>
   )
 }
