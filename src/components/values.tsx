@@ -25,7 +25,7 @@ export function Values() {
           </div>
         </BlurFade>
 
-        <BlurFade inView delay={100}>
+        <BlurFade inView>
           <div className="group relative flex flex-col items-center text-center space-y-4 p-8 rounded-2xl transition-all duration-500 hover:bg-muted/30">
             <div className="relative">
               <div className="absolute inset-0 bg-blueAm/20 blur-2xl rounded-full scale-75 group-hover:scale-100 transition-transform duration-500" />
@@ -44,7 +44,7 @@ export function Values() {
           </div>
         </BlurFade>
 
-        <BlurFade inView delay={200}>
+        <BlurFade inView>
           <div className="group relative flex flex-col items-center text-center space-y-4 p-8 rounded-2xl transition-all duration-500 hover:bg-muted/30">
             <div className="relative">
               <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full scale-75 group-hover:scale-100 transition-transform duration-500" />
