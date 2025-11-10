@@ -39,7 +39,7 @@ const services = [
     shortDesc: 'Correção topográfica precisa para bases estáveis',
     description:
       'O nivelamento de terreno é essencial para garantir uma base plana e estável para construções. Esse processo ajusta a topografia do solo, corrigindo desníveis e preparando a área para receber fundações e estruturas com segurança.',
-    image: levelingImg,
+    image: demolitionImg,
   },
   {
     id: 'demolition',
@@ -47,7 +47,7 @@ const services = [
     shortDesc: 'Desmontagem controlada e segura de estruturas existentes',
     description:
       'A demolição é o serviço de desmontagem controlada de estruturas antigas ou indesejadas no terreno, preparando a área para novos projetos. Esse processo inclui a remoção segura de todos os resíduos, garantindo um espaço limpo.',
-    image: demolitionImg,
+    image: levelingImg,
   },
   {
     id: 'excavation',
@@ -84,14 +84,14 @@ export function Services() {
                 />
               </div>
             </DialogTrigger>
-            <DialogContent className="w-3/4 lg:max-w-2xl bg-slate-200">
+            <DialogContent className="w-3/4 lg:max-w-2xl bg-grayAm">
               <DialogHeader>
-                <DialogTitle className="text-2xl">{service.title}</DialogTitle>
+                <DialogTitle className="text-2xl font-semibold text-left">{service.title}</DialogTitle>
                 <DialogDescription className="text-base text-muted-foreground pt-4 text-left leading-relaxed">
                   {service.description}
                 </DialogDescription>
               </DialogHeader>
-              <div className="aspect-video w-full overflow-hidden rounded-lg mt-4">
+              <div className="aspect-video w-full overflow-hidden rounded-md border border-goldAm mt-4">
                 <Image
                   src={service.image}
                   alt={service.title}

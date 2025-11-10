@@ -22,9 +22,8 @@ export default function Home() {
       </div>
 
       <div className="mx-auto flex max-w-[90rem] flex-col px-5">
-        <Values />
         <ReviewsSection/>
-        <Marquee />
+        <Values />
         <About />
 
         <FrequentlyAsked />

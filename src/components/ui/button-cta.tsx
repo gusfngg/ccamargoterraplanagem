@@ -10,7 +10,7 @@ export function ButtonCta({ message, className }: ButtonCtaInterface) {
   return (
     <Link
       href={
-        'https://api.whatsapp.com/send?phone=5515997452271&text=Quero%20solicitar%20um%20or%C3%A7amento!'
+        'https://api.whatsapp.com/send?phone=5515996593858&text=Quero%20solicitar%20um%20or%C3%A7amento!'
       }
       target="_blank"
     >

@@ -23,7 +23,7 @@ export function About() {
             A CCamargo Terraplenagem é uma empresa que vem atuando na área há
             mais de{' '}
             <span className="font-mono border bg-zinc-400/30 rounded-md p-0.5">
-              12 anos
+              15 anos
             </span>{' '}
             no mercado. Tendo uma vasta experiência em diversas áreas do ramo,
             sua missão é entregar um serviço com excelência, sempre visando a

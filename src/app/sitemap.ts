@@ -1,7 +1,7 @@
 export default function sitemap() {
   return [
     {
-      url: 'https://almeidaterraplenagem.com.br',
+      url: 'https://www.ccamargoterraplanagem.com.br',
       lastModified: new Date(),
     },
   ]

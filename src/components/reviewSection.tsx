@@ -1,6 +1,7 @@
 import { ReviewCarousel } from "./reviewCarousel";
 import { Star, TrendingUp, Users, Award } from "lucide-react";
 import { jura, switzer } from '@/lib/fonts'
+import { ButtonCta } from "./ui/button-cta";
 
 
 const reviews = [
@@ -110,6 +111,10 @@ export const ReviewsSection = () => {
 
         {/* Reviews Carousel */}
         <ReviewCarousel reviews={reviews} />
+        <div className="flex items-center justify-center">
+          <ButtonCta className="mt-6" message="Solicitar um orçamento" />
+        </div>
+  
       </div>
     </section>
   );

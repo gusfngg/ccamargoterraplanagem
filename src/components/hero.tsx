@@ -46,12 +46,7 @@ export default function Hero() {
           </BlurFade>
           <BlurFade inView>
             <p className="lg:text-xl text-lg text-white mb-2">
-              Modelamos o solo para que suas obras iniciem com firmeza.
-            </p>
-          </BlurFade>
-          <BlurFade inView>
-            <p className="lg:text-xl text-lg text-white mb-2">
-              Entre em contato: <strong>(15) 99745-2271</strong>
+A nossa missão é preparar o terreno para sustentar a base da realização do seu sonho!
             </p>
           </BlurFade>
           <BlurFade inView>

@@ -67,7 +67,7 @@ export function FrequentlyAsked() {
           </Accordion>
 
         <BlurFade inView>
-          <ButtonCta className="mt-6" message="Solicite um orçamento" />
+          <ButtonCta className="mt-6" message="Solicitar um orçamento" />
         </BlurFade>
       </div>
     </div>
