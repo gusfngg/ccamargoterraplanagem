@@ -7,7 +7,7 @@ import Script from 'next/script'
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.ccamargoterraplanagem.com.br'),
   title: 'Ccamargo Terraplenagem | Serviços em Salto de Pirapora',
-  description: 'Empresa de terraplenagem em Salto de Pirapora e região. Nivelamento de terreno, escavação, aterro e limpeza. +15 anos de experiência. Solicite seu orçamento gratuito!',
+  description: 'Empresa de terraplenagem em Salto de Pirapora e região. Nivelamento de terreno, escavação, aterro e limpeza. +15 anos de experiência. Solicite um orçamento gratuito!',
   keywords: [
     'terraplenagem Salto de Pirapora',
     'terraplenagem Salto de Pirapora SP',
