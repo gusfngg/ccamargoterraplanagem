@@ -6,7 +6,7 @@ import Script from 'next/script'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.ccamargoterraplanagem.com.br'),
-  title: 'Terraplenagem em Salto de Pirapora SP | Ccamargo Terraplenagem - Orçamento Grátis',
+  title: 'Ccamargo Terraplenagem | Serviços em Salto de Pirapora',
   description: 'Empresa de terraplenagem em Salto de Pirapora e região. Nivelamento de terreno, escavação, aterro e limpeza. +15 anos de experiência. Solicite seu orçamento gratuito!',
   keywords: [
     'terraplenagem Salto de Pirapora',
@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     'serviços de terraplanagem',
     'ccamargo terraplenagem',
   ],
+  icons: {
+    icon: '/favicon.ico',
+  },
   openGraph: {
     title: 'Terraplenagem em Salto de Pirapora e Região | Ccamargo Terraplenagem',
     description: '✓ Nivelamento ✓ Demolição ✓ Escavação ✓ Aterro ✓ Limpeza de Terreno. Equipamentos modernos e equipe experiente. Atendemos Salto de Pirapora e região. Orçamento sem compromisso!',
