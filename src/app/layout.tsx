@@ -125,6 +125,20 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter} antialiased scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 dark:scrollbar-thumb-neutral-500 dark:scrollbar-track-neutral-700`}>
+                <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-16626951404"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-ads-tag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-16626951404');
+          `}
+        </Script>
+
         {children}
         <Analytics />
       </body>
