@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   ],
   icons: {
     icon: '/favicon.ico',
+    shortcut: '/favicon.ico'
   },
   openGraph: {
     title: 'Terraplenagem em Salto de Pirapora e Região | Ccamargo Terraplenagem',
