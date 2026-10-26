@@ -1,7 +1,8 @@
-export {};
+export {}
 
 declare global {
   interface Window {
-    gtag: (...args: any[]) => void;
+    // Pode não existir se o bloqueador de anúncios barrar o script do Google.
+    gtag?: (...args: unknown[]) => void
   }
 }

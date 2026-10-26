@@ -1,59 +1,46 @@
-'use client'
+import { getImageProps } from 'next/image'
+import tall from '@/assets/hero-tall.jpg'
+import wide from '@/assets/hero-wide.jpg'
+import { PhoneLink, QuoteLink } from './cta'
+import { HeroStage } from './hero-stage'
 
-import Image from 'next/image'
-import BackgroundImgDesktop from '@/assets/background-img.png'
-import BackgroundImgMobile from '@/assets/background-img-mobile.png'
-import { jura } from '@/lib/fonts'
-import { useEffect, useState } from 'react'
-import { ButtonCta } from './ui/button-cta'
-import BlurFade from './ui/blur-fade'
-
-export default function Hero() {
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-
-    checkIsMobile()
-    window.addEventListener('resize', checkIsMobile)
-
-    return () => window.removeEventListener('resize', checkIsMobile)
-  }, [])
+export function Hero() {
+  // Foto horizontal no desktop, vertical no celular (art direction com <picture>).
+  const common = { alt: 'Escavadeira em terreno de terra vermelha sendo terraplenado', sizes: '100vw', priority: true }
+  const { srcSet: wideSet } = getImageProps({ ...common, src: wide }).props
+  const { srcSet: tallSet, ...img } = getImageProps({ ...common, src: tall }).props
 
   return (
-    <div className="relative w-full">
-      <BlurFade inView>
-        <Image
-          src={isMobile ? BackgroundImgMobile : BackgroundImgDesktop}
-          alt="hero-background"
-          width={5313}
-          height={2500}
-          objectFit="cover"
-          objectPosition="center bottom"
-          priority
-        />
-      </BlurFade>
-      <div className="absolute inset-0">
-        <div className="max-w-[87rem] mx-auto flex flex-col items-start px-9">
-          <BlurFade inView>
-            <h1
-              className={`text-4xl md:text-6xl font-bold text-white lg:mt-64 mt-36 mb-4 ${jura.className}`}
-            >
-              SERVIÇO DE TERRAPLENAGEM
+    <section id="hero" className="theme-dark sticky top-0 h-[100svh] min-h-[36rem]">
+      <HeroStage>
+        <picture>
+          <source media="(min-width: 768px)" srcSet={wideSet} />
+          <source media="(max-width: 767px)" srcSet={tallSet} />
+          <img {...img} className="anim-settle absolute inset-0 h-full w-full object-cover md:object-right" />
+        </picture>
+        <div aria-hidden className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-night/60 to-transparent" />
+        <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-night/90 via-night/30 to-transparent sm:h-2/3 sm:via-night/50" />
+
+        <div className="relative z-10 mx-auto flex h-full max-w-page flex-col justify-between px-5 pb-16 pt-28 sm:justify-end sm:px-8 sm:pb-28">
+          <div>
+            <h1>
+              <span className="t-eyebrow anim-in block">Terraplenagem em Salto de Pirapora e região</span>
+              <span className="t-hero anim-in mt-4 block text-white [animation-delay:80ms]">
+                Terreno pronto <br className="hidden sm:block" />
+                para construir.
+              </span>
             </h1>
-          </BlurFade>
-          <BlurFade inView>
-            <p className="lg:text-xl text-lg text-white mb-2">
-A nossa missão é preparar o terreno para sustentar a base da realização do seu sonho!
+            <p className="t-lead anim-in mt-6 max-w-[34ch] text-white/75 [animation-delay:160ms]">
+              Limpeza, escavação, nivelamento e demolição de terrenos, com mais de 15 anos de experiência. Orçamento sem
+              compromisso pelo WhatsApp.
             </p>
-          </BlurFade>
-          <BlurFade inView>
-            <ButtonCta message="Solicite um orçamento" />
-          </BlurFade>
+          </div>
+          <div className="anim-in flex flex-col gap-3 [animation-delay:240ms] sm:mt-10 sm:flex-row">
+            <QuoteLink />
+            <PhoneLink className="btn glass text-white hover:bg-white/15" />
+          </div>
         </div>
-      </div>
-    </div>
+      </HeroStage>
+    </section>
   )
 }

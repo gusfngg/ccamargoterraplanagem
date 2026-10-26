@@ -1,39 +1,37 @@
 import { About } from '@/components/about'
-import { Footer } from '@/components/footer'
-import { FrequentlyAsked } from '@/components/frequently-asked '
+import { Contact } from '@/components/contact'
+import { Faq } from '@/components/faq'
 import { Header } from '@/components/header'
-import Hero from '@/components/hero'
-import Marquee from '@/components/marquee'
-import { ReviewsSection } from '@/components/reviewSection'
+import { Hero } from '@/components/hero'
+import { MobileBar } from '@/components/mobile-bar'
+import { Process } from '@/components/process'
+import { QuoteSheet } from '@/components/quote-sheet'
+import { Reviews } from '@/components/reviews'
 import { Services } from '@/components/services'
-import { Values } from '@/components/values'
+import { Works } from '@/components/works'
 
+// Cada seção é uma "folha" (.layer) que sobe por cima da anterior, alternando claro e escuro.
 export default function Home() {
   return (
-    <div className="bg-blueAm/5 antialiased">
-      <div className="mx-auto flex max-w-[90rem] flex-col px-5">
-        <Header />
-      </div>
-
-      <Hero />
-
-      <div className="mx-auto flex max-w-[112rem] flex-col px-5">
-        <Services />
-      </div>
-
-      <div className="mx-auto flex max-w-[90rem] flex-col px-5">
-        <ReviewsSection/>
-        <Values />
-        <About />
-
-        <FrequentlyAsked />
-      </div>
-
-      <div className="border-t mt-32">
-        <div className="p-5 mx-auto flex max-w-[90rem] flex-col">
-          <Footer />
+    <>
+      <Header />
+      <main>
+        <div className="relative bg-night">
+          <Hero />
+          <div id="hero-end" aria-hidden />
+          <Services />
         </div>
-      </div>
-    </div>
+        <Process />
+        <div className="layer">
+          <Works />
+          <Reviews />
+        </div>
+        <About />
+        <Faq />
+      </main>
+      <Contact />
+      <QuoteSheet />
+      <MobileBar />
+    </>
   )
 }

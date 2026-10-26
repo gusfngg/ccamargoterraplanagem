@@ -2,71 +2,266 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+  Tokens por tema. A página alterna "folhas" claras e escuras (como sheets do iOS);
+  uma seção com .theme-dark troca os tokens e todos os filhos herdam.
+  Raios: folha 40px, cards 28px, controles em pílula (concêntricos com o card/cápsula).
+*/
+:root {
+  --paper: 245 245 247;
+  --surface: 255 255 255;
+  --ink: 29 29 31;
+  --muted: 110 110 115;
+  --accent: 138 106 34;
+  --cta: 3 13 78;
+  --cta-ink: 255 255 255;
+  color-scheme: light;
+  interpolate-size: allow-keywords;
+}
+
+.theme-dark {
+  --paper: 7 9 28;
+  --surface: 20 24 56;
+  --ink: 245 245 247;
+  --muted: 161 161 170;
+  --accent: 222 190 118;
+  --cta: 207 171 92;
+  --cta-ink: 3 13 78;
+  color: rgb(var(--ink));
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-night font-sans text-ink antialiased;
+  font-size: 17px;
+  line-height: 1.47;
+  letter-spacing: -0.011em;
+  font-optical-sizing: auto;
 }
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
-  }
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+@layer components {
+  /* Escala tipográfica: tracking mais negativo quanto maior o texto. */
+  .t-hero {
+    font-size: clamp(2.75rem, 1.1rem + 6.6vw, 7rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    font-weight: 600;
+    text-wrap: balance;
   }
-  body {
-    @apply bg-background text-foreground;
+  .t-section {
+    font-size: clamp(2.125rem, 1.2rem + 3.4vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    text-wrap: balance;
+  }
+  .t-title {
+    font-size: clamp(1.375rem, 1rem + 0.9vw, 1.75rem);
+    line-height: 1.15;
+    letter-spacing: -0.022em;
+    font-weight: 600;
+  }
+  .t-lead {
+    font-size: clamp(1.1875rem, 1rem + 0.5vw, 1.375rem);
+    line-height: 1.42;
+    letter-spacing: -0.016em;
+    text-wrap: pretty;
+  }
+  .t-eyebrow {
+    font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+    line-height: 1.2;
+    letter-spacing: -0.016em;
+    font-weight: 600;
+    color: rgb(var(--accent));
+  }
+
+  .btn {
+    @apply inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 text-[17px] font-medium tracking-[-0.016em] transition duration-200 active:scale-[0.97];
+    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold;
+  }
+  .btn-cta {
+    @apply btn bg-cta text-cta-ink hover:brightness-110;
+  }
+  .btn-quiet {
+    @apply btn bg-ink/[0.08] text-ink hover:bg-ink/[0.14];
+  }
+
+  /* Folha: sobe por cima da anterior com cantos arredondados. */
+  .layer {
+    position: relative;
+    isolation: isolate;
+    margin-top: -1.75rem;
+    border-radius: 1.75rem 1.75rem 0 0;
+    background: rgb(var(--paper));
+    color: rgb(var(--ink));
+  }
+  @media (min-width: 640px) {
+    .layer {
+      margin-top: -2.5rem;
+      border-radius: 2.5rem 2.5rem 0 0;
+    }
+  }
+  .theme-dark.layer {
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08);
+  }
+
+  /* Carrossel que alinha a primeira foto com o conteúdo e sangra até a borda da tela. */
+  .track {
+    --gutter: 1.25rem;
+    padding-inline: var(--gutter);
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+  }
+  .track::-webkit-scrollbar {
+    display: none;
+  }
+  @media (min-width: 640px) {
+    .track {
+      --gutter: max(2rem, calc((100vw - 80rem) / 2 + 2rem));
+    }
+  }
+
+  /* Vidro escuro (aproximação web do material do iOS). */
+  .glass {
+    background: rgb(14 16 40 / 0.62);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(20px) saturate(180%);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.1),
+      inset 0 0 0 1px rgb(255 255 255 / 0.06),
+      0 12px 40px -12px rgb(0 0 0 / 0.4);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    background: rgb(14 16 40);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+@keyframes settle {
+  from {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes materialize {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(8px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .anim-settle {
+    animation: settle 2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .anim-in {
+    animation: materialize 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
+/* Folha de orçamento: bottom sheet no celular, painel central no desktop. */
+.quote-sheet {
+  margin: auto auto 0;
+  width: 100%;
+  max-width: 100%;
+  max-height: 92dvh;
+  padding: 0;
+  border: 0;
+  border-radius: 28px 28px 0 0;
+  background: rgb(var(--surface));
+  color: rgb(var(--ink));
+  box-shadow: 0 -24px 64px rgb(3 13 78 / 0.25);
+}
+
+.quote-sheet[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.quote-sheet::backdrop {
+  background: rgb(4 5 18 / 0.5);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+@media (min-width: 640px) {
+  .quote-sheet {
+    margin: auto;
+    max-width: 36rem;
+    max-height: min(90dvh, 54rem);
+    border-radius: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .quote-sheet[open] {
+    animation: sheet-in 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .quote-sheet[open]::backdrop {
+    animation: fade-in 0.3s ease;
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+@media (min-width: 640px) {
+  @keyframes sheet-in {
+    from {
+      opacity: 0;
+      transform: translateY(24px) scale(0.97);
+      filter: blur(6px);
+    }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Acordeão nativo com abertura suave onde o navegador suporta. */
+details::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition:
+    block-size 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    content-visibility 0.4s allow-discrete;
+}
+
+details[open]::details-content {
+  block-size: auto;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  details::details-content {
+    transition: none;
   }
 }

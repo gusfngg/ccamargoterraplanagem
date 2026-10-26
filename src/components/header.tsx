@@ -1,116 +1,38 @@
-'use client'
-
-import { Link as ScrollLink } from 'react-scroll'
-import { Menu } from 'lucide-react'
-import { Button } from './ui/button'
 import Image from 'next/image'
-import Logo from '@/assets/logotipo.png'
+import logoLight from '@/assets/logo-light.png'
+import { QuoteLink } from './cta'
 
-import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer'
-import { useEffect, useState } from 'react'
-import Link from 'next/link'
-import BlurFade from './ui/blur-fade'
-
-const navItems = [
-  { name: 'Início', to: 'hero' },
-  { name: 'Serviços', to: 'services' },
-  { name: 'Nossa base', to: 'values' },
-  { name: 'Sobre', to: 'about' },
+const nav = [
+  ['Serviços', '#services'],
+  ['Como funciona', '#process'],
+  ['Obras', '#works'],
+  ['Avaliações', '#feedbacks'],
+  ['Dúvidas', '#askeds'],
 ]
 
+// Cápsula de vidro flutuante. Fixa no desktop; no celular rola junto (a barra de baixo assume o CTA).
 export function Header() {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-  const [isMounted, setIsMounted] = useState(false)
-
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
-
-  function handleLinkClick() {
-    setTimeout(() => setIsDrawerOpen(false), 100)
-  }
-
-  if (!isMounted) {
-    return null
-  }
-
   return (
-      <header className="mt-7 mb-5 lg:my-4">
-          <div className="lg:py-2 px-4">
-            <div className="flex items-center justify-between">
-              <div className='flex-shrink-0'>
-                <Image
-                  className="h-[4.5rem] w-auto lg:h-20 object-contain"
-                  src={Logo}
-                  height={3780}
-                  width={6804}
-                  alt="logo"
-                />
-              </div>
+    <header className="theme-dark pointer-events-none absolute inset-x-0 top-0 z-50 px-3 pt-3 lg:fixed">
+      <div className="glass pointer-events-auto mx-auto flex h-14 max-w-[68rem] items-center justify-between gap-6 rounded-full py-1.5 pl-5 pr-1.5">
+        <a href="#hero" className="shrink-0 rounded-full">
+          <Image src={logoLight} alt="CCamargo Terraplenagem" priority className="h-7 w-auto" />
+        </a>
 
-              <div className="hidden lg:block">
-                <nav className="border rounded-lg p-4 flex items-center">
-                  <ul className="flex items-center justify-center gap-10">
-                    {navItems.map((item) => (
-                      <li key={item.to} className="flex items-center">
-                        <ScrollLink
-                          to={item.to}
-                          smooth={true}
-                          duration={500}
-                          offset={-70}
-                          spy={true}
-                          activeClass="text-primary"
-                        >
-                          <span className="text-lg cursor-pointer text-blueAm font-medium hover:text-blue-950 transition-">
-                            {item.name}
-                          </span>
-                        </ScrollLink>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-              </div>
-                <Button className="hidden lg:block bg-blueAm text-grayAm font-semibold hover:bg-blue-900">
-                  <Link href="https://api.whatsapp.com/send?phone=5515996593858&text=Quero%20solicitar%20um%20or%C3%A7amento!">
-                    Entrar em contato
-                  </Link>
-                </Button>
+        <nav aria-label="Seções" className="hidden lg:block">
+          <ul className="flex items-center gap-7 text-[14px] tracking-[-0.01em] text-white/70">
+            {nav.map(([label, href]) => (
+              <li key={href}>
+                <a href={href} className="transition-colors hover:text-white">
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-              <div className="flex items-center justify-between min-[825px]:hidden">
-                  <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
-                    <DrawerTrigger asChild>
-                      <button aria-label="Open menu">
-                        <Menu className="h-6 w-6 text-blueAm " />
-                      </button>
-                    </DrawerTrigger>
-                    <DrawerContent className="bg-grayAm">
-                      <BlurFade inView>
-                        <div className="mt-12 flex flex-col items-center justify-center space-y-3 p-4 ">
-                          {navItems.map((item) => (
-                            <ScrollLink
-                              key={item.to}
-                              to={item.to}
-                              smooth={true}
-                              duration={500}
-                              offset={-70}
-                              spy={true}
-                              activeClass="border-primary"
-                              onClick={handleLinkClick}
-                            >
-                              <BlurFade inView>
-                                <Button className="bg-blueAm rounded-lg w-48 border hover:bg-blueAm/90 border-neutral-400 text-lg text-grayAm">
-                                  {item.name}
-                                </Button>
-                              </BlurFade>
-                            </ScrollLink>
-                          ))}
-                        </div>
-                      </BlurFade>
-                    </DrawerContent>
-                  </Drawer>
-              </div>
-            </div>
-          </div>
-      </header>
+        <QuoteLink className="btn-cta h-11 px-5 text-[15px]" />
+      </div>
+    </header>
   )
 }

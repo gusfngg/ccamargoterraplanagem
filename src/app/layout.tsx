@@ -1,13 +1,15 @@
 import './globals.css'
-import { inter } from '@/lib/fonts'
-import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/react'
+import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
+import { inter } from '@/lib/fonts'
+import { faqs, SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.ccamargoterraplanagem.com.br'),
+  metadataBase: new URL(SITE_URL),
   title: 'Ccamargo Terraplenagem | Serviços em Salto de Pirapora',
-  description: 'Empresa de terraplenagem em Salto de Pirapora e região. Nivelamento de terreno, escavação, aterro e limpeza. +15 anos de experiência. Solicite um orçamento gratuito!',
+  description:
+    'Empresa de terraplenagem em Salto de Pirapora e região. Nivelamento de terreno, escavação, aterro e limpeza. +15 anos de experiência. Solicite um orçamento gratuito!',
   keywords: [
     'terraplenagem Salto de Pirapora',
     'terraplenagem Salto de Pirapora SP',
@@ -20,101 +22,74 @@ export const metadata: Metadata = {
     'serviços de terraplanagem',
     'ccamargo terraplenagem',
   ],
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico'
-  },
+  // A imagem de compartilhamento vem de src/app/opengraph-image.jpg (convenção do Next).
   openGraph: {
     title: 'Terraplenagem em Salto de Pirapora e Região | Ccamargo Terraplenagem',
-    description: '✓ Nivelamento ✓ Demolição ✓ Escavação ✓ Aterro ✓ Limpeza de Terreno. Equipamentos modernos e equipe experiente. Atendemos Salto de Pirapora e região. Orçamento sem compromisso!',
-    url: 'https://www.ccamargoterraplanagem.com.br',
+    description:
+      'Nivelamento, demolição, escavação, aterro e limpeza de terreno. Equipamentos modernos e equipe experiente. Atendemos Salto de Pirapora e região. Orçamento sem compromisso!',
+    url: SITE_URL,
     siteName: 'Ccamargo Terraplenagem',
     locale: 'pt_BR',
     type: 'website',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Ccamargo Terraplenagem - Equipamentos e serviços em Salto de Pirapora SP',
-      }
-    ],
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-image-preview': 'large',
-    },
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
   },
-  alternates: {
-    canonical: 'https://www.ccamargoterraplanagem.com.br',
-  },
+  alternates: { canonical: SITE_URL },
 }
 
-// Schema.org JSON-LD para SEO local
-const schemaData = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Ccamargo Terraplenagem",
-  "image": "https://www.ccamargoterraplanagem.com.br/og-image.jpg",
-  "description": "Empresa de terraplenagem em Salto de Pirapora e região. Nivelamento, escavação, aterro e limpeza de terrenos com equipamentos modernos.",
-  "url": "https://www.ccamargoterraplanagem.com.br",
-  "telephone": "+55-15-99659-3858",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Rua Eligio Arthur Perazzio, Salto De Pirapora SP, 18115-120, Brasil", 
-    "addressLocality": "Salto de Pirapora",
-    "addressRegion": "SP",
-    "postalCode": "18160-000", 
-    "addressCountry": "BR"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "-23.6479436", 
-    "longitude": "-47.5767464"  
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "opens": "08:00",
-      "closes": "18:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Saturday",
-      "opens": "08:00",
-      "closes": "12:00"
-    }
-  ],
-  "areaServed": [
-    {
-      "@type": "City",
-      "name": "Salto de Pirapora"
-    },
-    {
-      "@type": "City",
-      "name": "Votorantim"
-    },
-    {
-      "@type": "City",
-      "name": "Sorocaba"
-    }
-    // Adicione outras cidades que você atende
-  ]
+export const viewport: Viewport = {
+  themeColor: '#07091C',
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+// Schema.org para SEO local + perguntas frequentes.
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Ccamargo Terraplenagem',
+    image: `${SITE_URL}/opengraph-image.jpg`,
+    description:
+      'Empresa de terraplenagem em Salto de Pirapora e região. Nivelamento, escavação, aterro e limpeza de terrenos com equipamentos modernos.',
+    url: SITE_URL,
+    telephone: '+55-15-99659-3858',
+    priceRange: '$$',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Rua Eligio Arthur Perazzio, Salto De Pirapora SP, 18115-120, Brasil',
+      addressLocality: 'Salto de Pirapora',
+      addressRegion: 'SP',
+      postalCode: '18160-000',
+      addressCountry: 'BR',
+    },
+    geo: { '@type': 'GeoCoordinates', latitude: '-23.6479436', longitude: '-47.5767464' },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '08:00',
+        closes: '18:00',
+      },
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '08:00', closes: '12:00' },
+    ],
+    areaServed: ['Salto de Pirapora', 'Votorantim', 'Sorocaba'].map((name) => ({ '@type': 'City', name })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+]
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className="scroll-smooth">
+    <html lang="pt-BR" className={inter.variable}>
       <head>
         {/* Google Tag Manager */}
         <Script id="gtm" strategy="afterInteractive">
@@ -124,19 +99,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KQVVT9S4');`}
         </Script>
-        {/* End Google Tag Manager */}
-
-        <Script
-          id="schema-org"
-          type="application/ld+json"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(schemaData),
-          }}
-        />
       </head>
-      <body className={`${inter} antialiased scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 dark:scrollbar-thumb-neutral-500 dark:scrollbar-track-neutral-700`}>
-        {/* Google Tag Manager (noscript) */}
+      <body>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-KQVVT9S4"
@@ -145,13 +109,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
-        {/* End Google Tag Manager (noscript) */}
 
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-16626951404"
-          strategy="afterInteractive"
-        />
-
+        {/* Google Ads: a conversão dispara no envio do orçamento (quote-sheet.tsx). */}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=AW-16626951404" strategy="afterInteractive" />
         <Script id="google-ads-tag" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
@@ -160,6 +120,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             gtag('config', 'AW-16626951404');
           `}
         </Script>
+
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
         {children}
         <Analytics />
