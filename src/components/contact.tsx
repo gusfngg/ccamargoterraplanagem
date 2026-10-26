@@ -41,7 +41,7 @@ export function Contact() {
           ))}
         </dl>
         <div className="flex flex-col gap-6 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <Image src={logoLight} alt="CCamargo Terraplenagem" className="h-8 w-auto" />
+          <Image src={logoLight} alt="CCamargo Terraplenagem" className="h-8 w-auto self-start sm:self-auto" />
           <p className="text-[13px] text-muted">
             © {new Date().getFullYear()} CCamargo Terraplenagem. Site por{' '}
             <a href="https://instagram.com/gs.gus" target="_blank" rel="noopener noreferrer" className="hover:underline">
