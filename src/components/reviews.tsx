@@ -1,4 +1,6 @@
-import { Star } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
+import { GOOGLE_PROFILE, GOOGLE_RATING } from '@/lib/site'
+import { GoogleIcon, Stars } from './cta'
 
 // Trechos de avaliações reais do Google (texto original, só encurtado).
 const featured = {
@@ -25,23 +27,34 @@ const reviews = [
   { name: 'Nelso Torres', text: 'Empresa íntegra com profissionais extremamente comprometidos. Muitíssimo satisfeito.' },
 ]
 
-function Stars({ className = 'size-4' }: { className?: string }) {
-  return (
-    <div role="img" aria-label="5 de 5 estrelas" className="flex gap-0.5">
-      {Array.from({ length: 5 }, (_, i) => (
-        <Star key={i} className={`${className} fill-gold text-gold`} strokeWidth={0} aria-hidden />
-      ))}
-    </div>
-  )
-}
-
 export function Reviews() {
   return (
     <section id="feedbacks" className="pb-24 pt-24 sm:pb-32 sm:pt-32">
-      <div className="mx-auto max-w-page px-5 sm:px-8">
-        <p className="t-eyebrow">Avaliações do Google</p>
-        <h2 className="t-section mt-3">Quem contratou, recomenda.</h2>
+      <div className="mx-auto flex max-w-page flex-wrap items-end justify-between gap-x-8 gap-y-8 px-5 sm:px-8">
+        <h2 className="t-section max-w-[14ch]">Quem contratou, recomenda.</h2>
+        <a
+          href={GOOGLE_PROFILE}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex items-center gap-4 rounded-full bg-surface py-3 pl-3 pr-6 shadow-[0_1px_2px_rgb(0_0_0/0.04)] transition-shadow hover:shadow-[0_8px_30px_-8px_rgb(0_0_0/0.15)]"
+        >
+          <span className="grid size-12 place-items-center rounded-full bg-paper">
+            <GoogleIcon className="size-6" />
+          </span>
+          <span>
+            <span className="flex items-center gap-2.5">
+              <span className="text-[28px] font-semibold leading-none tracking-[-0.03em]">{GOOGLE_RATING}</span>
+              <Stars />
+            </span>
+            <span className="mt-1 flex items-center gap-1 text-[14px] text-muted group-hover:text-ink">
+              Ver avaliações no Google
+              <ArrowUpRight className="size-3.5" strokeWidth={2} aria-hidden />
+            </span>
+          </span>
+        </a>
+      </div>
 
+      <div className="mx-auto max-w-page px-5 sm:px-8">
         <figure className="mt-12 rounded-[28px] bg-surface p-7 sm:p-12 lg:mt-16">
           <Stars className="size-5" />
           <blockquote className="mt-6 max-w-[34ch] text-[clamp(1.5rem,1rem+1.8vw,2.5rem)] font-semibold leading-[1.18] tracking-[-0.025em]">

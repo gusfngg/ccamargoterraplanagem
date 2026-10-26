@@ -1,7 +1,8 @@
 import { getImageProps } from 'next/image'
 import tall from '@/assets/hero-tall.jpg'
 import wide from '@/assets/hero-wide.jpg'
-import { PhoneLink, QuoteLink } from './cta'
+import { GOOGLE_RATING } from '@/lib/site'
+import { PhoneLink, QuoteLink, Stars } from './cta'
 import { HeroStage } from './hero-stage'
 
 export function Hero() {
@@ -34,6 +35,15 @@ export function Hero() {
               Limpeza, escavação, nivelamento e demolição de terrenos, com mais de 15 anos de experiência. Orçamento sem
               compromisso pelo WhatsApp.
             </p>
+            <a
+              href="#feedbacks"
+              className="anim-in mt-5 inline-flex items-center gap-2.5 text-[15px] text-white/75 transition-colors [animation-delay:200ms] hover:text-white"
+            >
+              <Stars />
+              <span>
+                <strong className="font-semibold text-white">{GOOGLE_RATING}</strong> no Google
+              </span>
+            </a>
           </div>
           <div className="anim-in flex flex-col gap-3 [animation-delay:240ms] sm:mt-10 sm:flex-row">
             <QuoteLink />

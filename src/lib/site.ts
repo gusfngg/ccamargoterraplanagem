@@ -5,6 +5,11 @@ export const INSTAGRAM = 'https://www.instagram.com/ccamargoterraplenagem/'
 export const SITE_URL = 'https://www.ccamargoterraplanagem.com.br'
 export const ADS_CONVERSION = 'AW-16626951404/1FXaCJuL9cMbEOzJrPg9'
 
+// Nota pública do perfil no Google Maps, conferida em 2026-10-26.
+// ponytail: valor fixo; se precisar atualizar sozinho, usar a Places API (exige chave paga).
+export const GOOGLE_RATING = '4,9'
+export const GOOGLE_PROFILE = 'https://maps.google.com/?cid=1785778199720272066'
+
 export const waLink = (text = 'Olá! Quero um orçamento de terraplenagem.') =>
   `https://wa.me/${PHONE}?text=${encodeURIComponent(text)}`
 
