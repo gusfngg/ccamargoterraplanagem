@@ -27,6 +27,8 @@ function doPost(e) {
     const sheet = aba()
     const linha = sheet.getLastRow() + 1
     const valores = CAMPOS.map((campo) => String(lead[campo] ?? '').slice(0, 300))
+      // Apóstrofo na frente neutraliza fórmula (=, +, -, @) mesmo se o formato texto falhar.
+      .map((v) => (/^[=+\-@]/.test(v) ? "'" + v : v))
     valores[0] = horaLocal(lead.ts)
     // Formato texto: o endpoint é público e "cidade" é livre. Sem isso, "=IMPORTXML(...)" viraria fórmula.
     sheet.getRange(linha, 1, 1, CAMPOS.length).setNumberFormat('@').setValues([valores])
