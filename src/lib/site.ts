@@ -10,7 +10,7 @@ export const ADS_CONVERSION = 'AW-16626951404/1FXaCJuL9cMbEOzJrPg9'
 export const QUOTE_FALLBACK = '/#contact'
 
 // Mobilização mínima (ex.: 'R$ 2.500'). Enquanto for null, nenhuma página mostra o valor.
-export const MOBILIZACAO_MINIMA: string | null = null
+export const MOBILIZACAO_MINIMA: string | null = 'R$ 5.000'
 
 // Nota pública do perfil no Google Maps, conferida em 2026-10-26.
 // ponytail: valor fixo; se precisar atualizar sozinho, usar a Places API (exige chave paga).

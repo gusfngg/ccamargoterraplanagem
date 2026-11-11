@@ -71,7 +71,7 @@ const servicos = [
 ] as const
 
 const condicoes = [
-  MOBILIZACAO_MINIMA && `Mobilização a partir de ${MOBILIZACAO_MINIMA}`,
+  MOBILIZACAO_MINIMA && `Obras a partir de ${MOBILIZACAO_MINIMA}`,
   'Locação de máquina com operador por diária ou por mês',
   'Atendimento em Sorocaba, Votorantim, Salto de Pirapora e região',
 ].filter(Boolean) as string[]
