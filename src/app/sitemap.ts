@@ -4,5 +4,9 @@ export default function sitemap() {
       url: 'https://www.ccamargoterraplanagem.com.br',
       lastModified: new Date(),
     },
+    {
+      url: 'https://www.ccamargoterraplanagem.com.br/obras',
+      lastModified: new Date(),
+    },
   ]
 }
