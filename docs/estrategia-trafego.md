@@ -118,16 +118,22 @@ loteamento" = ser a terraplenagem indicada pela imobiliária de um loteamento re
 - Corte do Motor A: 60 dias / ~R$ 3 mil sem nenhuma proposta acima do ticket mínimo → manter só G3
   (locação) + marca, e o resto do esforço vai para o B.
 
-## 7. Fatias de implementação (cada uma ≤ 1 dia)
+## 7. Fatias de implementação
 
-1. Auditoria de tag: GTM-KQVVT9S4 + `gtag.js` direto: a conversão não pode disparar em dobro.
-2. Formulário: tipo de cliente + faixas maiores + valor por tipo + `Ref` na mensagem + `transaction_id`
-   (`site.ts`, `quote.ts`, `quote-sheet.tsx`). Listener `tel:` secundário.
-3. Planilha: captura de gclid/gbraid/wbraid na chegada + beacon com Ref para Apps Script.
-4. Página `/obras` + copy B2B + tabela de mobilização; limpar FAQ que convida lote pequeno.
-5. Campanha nova no Ads (estrutura, negativas, anúncios com preço mínimo).
-6. Data Manager: aba da planilha → conversão offline "obra qualificada" (secundária → primária).
-7. Kit PDF + Perfil da Empresa (conteúdo vem do cliente).
+Feito na branch `trafego-qualificado` (2026-11-11, não mergeado):
+- [x] Auditoria do GTM (achado na seção 1, item 3). `tel:` já é rastreado pelo GTM na conta AW-18232243737.
+- [x] Formulário: "Você é", faixas maiores, valor por tipo, `Ref` + `transaction_id`, evento `lead_whatsapp`.
+- [x] CTAs deixam de ser links `wa.me` (abrir a folha não conta mais como lead no GTM).
+- [x] Captura de gclid/gbraid/wbraid + beacon para Apps Script (`docs/apps-script/leads.gs`, `docs/rastreamento.md`).
+- [x] Página `/obras` + barra do celular + link na home; FAQ sem convite a lote pequeno.
+
+Pendente (fora do código ou depende do primo):
+- [ ] Decidir a conta Ads oficial e religar o GTM no evento `lead_whatsapp` (ver `docs/rastreamento.md`).
+- [ ] Publicar o Apps Script e criar `NEXT_PUBLIC_LEADS_ENDPOINT` na Vercel.
+- [ ] Preencher `MOBILIZACAO_MINIMA` (`site.ts`) e `FROTA`/`MAIOR_OBRA`/`DOCUMENTOS`/`KIT_PDF` (`obras.ts`).
+- [ ] Campanha nova no Ads (CSV para o Google Ads Editor).
+- [ ] Data Manager: aba da planilha → conversão offline "obra qualificada".
+- [ ] Kit PDF + Perfil da Empresa no Google.
 
 ## 8. Perguntas para o primo (bloqueiam o resto)
 
