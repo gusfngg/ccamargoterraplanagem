@@ -7,7 +7,7 @@ import logoLight from '@/assets/logo-light.png'
 import area from '@/assets/obras/1.jpg'
 import movimentacao from '@/assets/obras/3.jpg'
 import demolicao from '@/assets/servicos/demolicao.jpg'
-import locacao from '@/assets/sobre.jpg'
+import locacao from '@/assets/servicos/escavacao.jpg'
 import { PhoneLink, Stars } from '@/components/cta'
 import { Header } from '@/components/header'
 import { HeroStage } from '@/components/hero-stage'
@@ -60,7 +60,7 @@ const servicos = [
     name: 'Máquina com operador',
     desc: 'Locação de escavadeira e retroescavadeira com operador, por diária ou por mês.',
     src: locacao,
-    alt: 'Retroescavadeira com a marca CCamargo em um terreno de areia',
+    alt: 'Escavadeira hidráulica amarela escavando solo ao lado de pedras',
   },
   {
     name: 'Demolição e fundação',
