@@ -143,7 +143,7 @@ export function QuoteSheet() {
             ))}
           </Group>
 
-          <Group legend="Tamanho do terreno">
+          <Group legend="Tamanho da área">
             {sizes.map(([label, value]) => (
               <Chip key={value} type="radio" name="size" value={value} label={label} />
             ))}

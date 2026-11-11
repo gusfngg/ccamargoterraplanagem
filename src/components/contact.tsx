@@ -28,6 +28,9 @@ export function Contact() {
           <QuoteLink />
           <PhoneLink />
         </div>
+        <a href="/obras" className="mt-8 inline-block text-[15px] text-muted underline-offset-4 hover:text-white hover:underline">
+          É construtora ou empresa? Veja as condições para obras
+        </a>
       </section>
 
       <footer className="mx-auto max-w-page px-5 pb-10 pt-24 sm:px-8">

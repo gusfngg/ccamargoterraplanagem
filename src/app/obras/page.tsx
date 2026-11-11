@@ -11,6 +11,7 @@ import locacao from '@/assets/sobre.jpg'
 import { PhoneLink, Stars } from '@/components/cta'
 import { Header } from '@/components/header'
 import { HeroStage } from '@/components/hero-stage'
+import { MobileBar } from '@/components/mobile-bar'
 import { Process } from '@/components/process'
 import { QuoteSheet } from '@/components/quote-sheet'
 import { Works } from '@/components/works'
@@ -290,6 +291,7 @@ export default function Obras() {
       <main>
         <div className="relative bg-night">
           <Hero />
+          <div id="hero-end" aria-hidden />
           <Servicos />
         </div>
         <Process />
@@ -300,6 +302,7 @@ export default function Obras() {
       </main>
       <Contato />
       <QuoteSheet />
+      <MobileBar contactId="contato" who="empresa" />
     </>
   )
 }

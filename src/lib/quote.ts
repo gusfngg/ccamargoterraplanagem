@@ -16,7 +16,7 @@ export function buildMessage({ services, who, size, city, when, ref }: Quote) {
   return [
     `Olá! Quero um orçamento de ${what}.`,
     who && `Você é: ${who}`,
-    size && `Terreno: ${size}`,
+    size && `Área: ${size}`,
     city && `Cidade: ${city}`,
     when && `Prazo: ${when}`,
     ref && `Ref: ${ref}`,

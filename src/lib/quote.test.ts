@@ -14,7 +14,7 @@ test('junta serviços em português e só inclui linhas preenchidas', () => {
       size: 'até 300 m²',
       city: 'Votorantim',
     }),
-    'Olá! Quero um orçamento de limpeza de terreno, nivelamento e escavação.\nTerreno: até 300 m²\nCidade: Votorantim',
+    'Olá! Quero um orçamento de limpeza de terreno, nivelamento e escavação.\nÁrea: até 300 m²\nCidade: Votorantim',
   )
 })
 
@@ -28,7 +28,7 @@ test('mensagem completa traz "Você é" depois do pedido e o Ref na última linh
       when: 'o quanto antes',
       ref: 'K7QM',
     }),
-    'Olá! Quero um orçamento de escavação.\nVocê é: construtora\nTerreno: de 5.000 a 20.000 m²\nCidade: Sorocaba\nPrazo: o quanto antes\nRef: K7QM',
+    'Olá! Quero um orçamento de escavação.\nVocê é: construtora\nÁrea: de 5.000 a 20.000 m²\nCidade: Sorocaba\nPrazo: o quanto antes\nRef: K7QM',
   )
 })
 

@@ -4,7 +4,7 @@ import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 import { ClickIds } from '@/components/click-ids'
 import { inter } from '@/lib/fonts'
-import { faqs, SITE_URL } from '@/lib/site'
+import { SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -45,7 +45,7 @@ export const viewport: Viewport = {
   themeColor: '#07091C',
 }
 
-// Schema.org para SEO local + perguntas frequentes.
+// Schema.org para SEO local. O FAQPage fica só na home (src/app/page.tsx), onde o FAQ aparece.
 const schema = [
   {
     '@context': 'https://schema.org',
@@ -76,15 +76,6 @@ const schema = [
       { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '08:00', closes: '12:00' },
     ],
     areaServed: ['Salto de Pirapora', 'Votorantim', 'Sorocaba'].map((name) => ({ '@type': 'City', name })),
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((f) => ({
-      '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: { '@type': 'Answer', text: f.a },
-    })),
   },
 ]
 
