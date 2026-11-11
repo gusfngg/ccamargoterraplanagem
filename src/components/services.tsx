@@ -5,7 +5,7 @@ import escavacao from '@/assets/servicos/escavacao.jpg'
 import limpeza from '@/assets/servicos/limpeza.jpg'
 import nivelamento from '@/assets/servicos/nivelamento.jpg'
 import perfuracao from '@/assets/servicos/perfuracao.jpg'
-import { services, waLink } from '@/lib/site'
+import { QUOTE_FALLBACK, services } from '@/lib/site'
 
 // Bento: 6 colunas no desktop (4+2 / 4+2 / 3+3), 2 no tablet, 1 no celular. Uma célula por serviço.
 const cells = {
@@ -45,9 +45,7 @@ export function Services() {
                     <p className="mt-1.5 max-w-[40ch] text-[15px] leading-snug text-white/75">{s.desc}</p>
                   </div>
                   <a
-                    href={waLink()}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={QUOTE_FALLBACK}
                     data-quote={s.id}
                     aria-label={`Pedir orçamento de ${s.ask}`}
                     className="grid size-11 shrink-0 place-items-center rounded-full bg-white/15 backdrop-blur-md transition-colors duration-300 after:absolute after:inset-0 group-hover:bg-white group-hover:text-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"

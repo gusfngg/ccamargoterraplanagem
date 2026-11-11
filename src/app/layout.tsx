@@ -2,6 +2,7 @@ import './globals.css'
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
+import { ClickIds } from '@/components/click-ids'
 import { inter } from '@/lib/fonts'
 import { faqs, SITE_URL } from '@/lib/site'
 
@@ -110,7 +111,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
 
-        {/* Google Ads: a conversão dispara no envio do orçamento (quote-sheet.tsx). */}
+        {/* Google Ads: a conversão dispara no envio do orçamento (quote-sheet.tsx), com valor e transaction_id. */}
         <Script src="https://www.googletagmanager.com/gtag/js?id=AW-16626951404" strategy="afterInteractive" />
         <Script id="google-ads-tag" strategy="afterInteractive">
           {`
@@ -124,6 +125,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
         {children}
+        <ClickIds />
         <Analytics />
       </body>
     </html>

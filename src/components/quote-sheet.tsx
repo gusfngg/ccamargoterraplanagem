@@ -2,8 +2,9 @@
 
 import { Check, X } from 'lucide-react'
 import { type ReactNode, useEffect, useRef, useState } from 'react'
-import { buildMessage } from '@/lib/quote'
-import { ADS_CONVERSION, cities, PHONE_LABEL, services, sizes, TEL, waLink, whens } from '@/lib/site'
+import { sendLead } from '@/lib/attribution'
+import { buildMessage, leadValue, makeRef, type Quote } from '@/lib/quote'
+import { ADS_CONVERSION, cities, PHONE_LABEL, services, sizes, TEL, waLink, whens, whos } from '@/lib/site'
 import { WhatsAppIcon } from './cta'
 
 function Group({ legend, hint, children }: { legend: string; hint?: string; children: ReactNode }) {
@@ -28,28 +29,35 @@ function Chip({ type, name, value, label, id }: { type: 'checkbox' | 'radio'; na
   )
 }
 
-// Folha de orçamento: qualquer elemento com [data-quote] abre ela. O valor do atributo pré-marca um serviço.
+// Folha de orçamento: qualquer elemento com [data-quote] abre ela. O valor do atributo pré-marca um serviço
+// e data-quote-who (pf, construtora, loteadora ou empresa) pré-marca o "Você é".
 export function QuoteSheet() {
   const dialog = useRef<HTMLDialogElement>(null)
   const form = useRef<HTMLFormElement>(null)
+  // Ref novo a cada abertura. Fica em ref e não em estado: o listener de abertura é registrado uma vez e
+  // enxergaria o valor velho. Também não pode nascer no render (o servidor sortearia outro: hydration mismatch).
+  const ref = useRef('')
   const [message, setMessage] = useState(() => buildMessage({ services: [] }))
   const [otherCity, setOtherCity] = useState(false)
 
   // Relê o formulário inteiro a cada mudança: são poucos campos e evita um estado por campo.
+  function read(): Quote {
+    const data = new FormData(form.current ?? undefined)
+    const pick = (name: string) => String(data.get(name) ?? '')
+    return {
+      services: data.getAll('service').map(String),
+      who: pick('who'),
+      size: pick('size'),
+      city: pick('city') === 'outra' ? pick('cityName').trim() : pick('city'),
+      when: pick('when'),
+      ref: ref.current,
+    }
+  }
+
   function sync() {
     if (!form.current) return
-    const data = new FormData(form.current)
-    const pick = (name: string) => String(data.get(name) ?? '')
-    const isOther = pick('city') === 'outra'
-    setOtherCity(isOther)
-    setMessage(
-      buildMessage({
-        services: data.getAll('service').map(String),
-        size: pick('size'),
-        city: isOther ? pick('cityName').trim() : pick('city'),
-        when: pick('when'),
-      }),
-    )
+    setOtherCity(new FormData(form.current).get('city') === 'outra')
+    setMessage(buildMessage(read()))
   }
 
   useEffect(() => {
@@ -58,8 +66,13 @@ export function QuoteSheet() {
       const trigger = (e.target as Element).closest<HTMLElement>('[data-quote]')
       if (!trigger || !dialog.current || !form.current) return
       e.preventDefault()
-      const box = form.current.querySelector<HTMLInputElement>(`input[data-id="${trigger.dataset.quote}"]`)
+      const box = form.current.querySelector<HTMLInputElement>(`input[name="service"][data-id="${trigger.dataset.quote}"]`)
       if (box) box.checked = true
+      const radio = [...form.current.querySelectorAll<HTMLInputElement>('input[name="who"]')].find(
+        (r) => r.dataset.id === trigger.dataset.quoteWho,
+      )
+      if (radio) radio.checked = true
+      ref.current = makeRef()
       sync()
       dialog.current.showModal()
     }
@@ -68,7 +81,24 @@ export function QuoteSheet() {
   }, [])
 
   function send() {
-    window.gtag?.('event', 'conversion', { send_to: ADS_CONVERSION })
+    const q = read()
+    const tipo = whos.find((w) => w.ask === q.who)
+    const faixa = sizes.find(([, ask]) => ask === q.size)
+    const valor = leadValue({ who: tipo?.weight, size: faixa?.[2] })
+    const lead_ref = ref.current
+    // Valor é proxy autodeclarado (tipo + faixa): serve para observar, não para otimizar lance.
+    window.gtag?.('event', 'conversion', { send_to: ADS_CONVERSION, value: valor, currency: 'BRL', transaction_id: lead_ref })
+    // Evento para o GTM, caso as tags do container sejam religadas a ele (ver docs/rastreamento.md).
+    window.dataLayer?.push({ event: 'lead_whatsapp', lead_ref, lead_tipo: tipo?.id ?? '', lead_faixa: q.size, lead_valor: valor })
+    sendLead({
+      ref: lead_ref,
+      tipo: tipo?.id ?? '',
+      faixa: q.size ?? '',
+      servicos: q.services.join(', '),
+      cidade: q.city ?? '',
+      prazo: q.when ?? '',
+      valor,
+    })
     dialog.current?.close()
   }
 
@@ -105,6 +135,12 @@ export function QuoteSheet() {
               <Chip key={s.id} type="checkbox" name="service" value={s.ask} id={s.id} label={s.name} />
             ))}
             <Chip type="checkbox" name="service" value="outro serviço" id="outro" label="Outro" />
+          </Group>
+
+          <Group legend="Você é">
+            {whos.map((w) => (
+              <Chip key={w.id} type="radio" name="who" value={w.ask} id={w.id} label={w.name} />
+            ))}
           </Group>
 
           <Group legend="Tamanho do terreno">

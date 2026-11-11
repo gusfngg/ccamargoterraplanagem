@@ -1,19 +1,23 @@
 import { Phone, Star } from 'lucide-react'
 import type { ReactNode, SVGProps } from 'react'
-import { PHONE_LABEL, TEL, waLink } from '@/lib/site'
+import { PHONE_LABEL, QUOTE_FALLBACK, TEL } from '@/lib/site'
 
-// Abre a folha de orçamento (o QuoteSheet intercepta o clique). Sem JS, cai direto no WhatsApp.
+// Abre a folha de orçamento (o QuoteSheet intercepta o clique). Sem JS, rola até o contato.
+// Não é link wa.me de propósito: o GTM conta clique em wa.me como lead, e abrir a folha não é lead.
+// `who` pré-marca "Você é" na folha (data-quote-who: pf, construtora, loteadora ou empresa).
 export function QuoteLink({
   service = '',
+  who,
   className = 'btn-cta',
   children = 'Pedir orçamento',
 }: {
   service?: string
+  who?: string
   className?: string
   children?: ReactNode
 }) {
   return (
-    <a href={waLink()} target="_blank" rel="noopener noreferrer" data-quote={service} className={className}>
+    <a href={QUOTE_FALLBACK} data-quote={service} data-quote-who={who} className={className}>
       {children}
     </a>
   )
